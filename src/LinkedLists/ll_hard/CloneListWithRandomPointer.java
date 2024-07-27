@@ -2,12 +2,12 @@ package LinkedLists.ll_hard;
 
 import java.util.HashMap;
 
-class Node {
+class RNode {
     int val;
-    Node next;
-    Node random;
+    RNode next;
+    RNode random;
 
-    public Node(int val) {
+    public RNode(int val) {
         this.val = val;
         this.next = null;
         this.random = null;
@@ -34,12 +34,12 @@ public class CloneListWithRandomPointer {
      *     - Connect next pointer and extracting the copied list.
      *
      * */
-    public Node copyRandomList(Node head){
+    public RNode copyRandomList(RNode head){
         // Storing nodes in between original nodes.
-        Node temp = head;
+        RNode temp = head;
         while(temp != null){
             // Create a new Node
-            Node copyNode = new Node(temp.val);
+            RNode copyNode = new RNode(temp.val);
             // Insert copy node next to original
             copyNode.next = temp.next;
             temp.next = copyNode;
@@ -51,9 +51,9 @@ public class CloneListWithRandomPointer {
         temp = head;
         while(temp != null){
             // Get the copy Node
-            Node copyNode = temp.next;
+            RNode copyNode = temp.next;
             // Assign copy random
-            Node random = temp.random;
+            RNode random = temp.random;
             // Check if random goes to null
             if(random == null){
                 copyNode.random = null;
@@ -67,7 +67,7 @@ public class CloneListWithRandomPointer {
 
         // Split copied and original list and connect next pointers
         temp = head;
-        Node dummy = new Node(-1), res = dummy;
+        RNode dummy = new RNode(-1), res = dummy;
         while(temp != null){
             // Attach copy node to list
             res.next = temp.next;
@@ -83,15 +83,15 @@ public class CloneListWithRandomPointer {
 
 
     // Deep copy using bruteforce method
-    public Node copyRandomListBrute(Node head) {
+    public RNode copyRandomListBrute(RNode head) {
         // Map to store node pairs
-        HashMap<Node, Node> mapp = new HashMap<>();
+        HashMap<RNode, RNode> mapp = new HashMap<>();
         // Node for traversal
-        Node temp = head;
+        RNode temp = head;
 
         // Store all nodes pairs in map
         while(temp != null){
-            Node newNode = new Node(temp.val);
+            RNode newNode = new RNode(temp.val);
             mapp.put(temp, newNode);
             temp = temp.next;
         }
@@ -100,7 +100,7 @@ public class CloneListWithRandomPointer {
         temp = head;
         while(temp != null){
             // Fetch corresponding node
-            Node copyNode = mapp.get(temp);
+            RNode copyNode = mapp.get(temp);
             // Assign next and random links
             copyNode.next = mapp.get(temp.next);
             copyNode.random = mapp.get(temp.random);
