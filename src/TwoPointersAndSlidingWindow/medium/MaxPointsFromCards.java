@@ -1,4 +1,4 @@
-package TwoPointersAndSlidingWindow;
+package TwoPointersAndSlidingWindow.medium;
 
 import java.lang.Math;
 
