@@ -17,7 +17,7 @@ public class OddEvenLinkedList {
         // Check for empty or list with single node.
         if(head == null || head.next == null)   return head;
 
-        ArrayList<Integer> values = new ArrayList<Integer>();
+        ArrayList<Integer> values = new ArrayList<>();
         ListNode temp = head;
 
         // Iterate the odd nodes
