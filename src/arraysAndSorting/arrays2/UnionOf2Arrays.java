@@ -3,16 +3,29 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class UnionOf2Arrays {
+    /**
+     * Q.   Given two sorted arrays of size n and m respectively, find their union.
+     *      The Union of two arrays can be defined as the common and distinct elements in the two arrays.
+     *      Return the elements in sorted order.
+     *
+     *      # Bruteforce solution:
+     *      - Create a set and add both array elements and return those elements.
+     *      - Create a new output array from the set.
+     *      TC: O(M+N)  // Insertion in Hashset is O(1)
+     *      SC: O(M+N)  // Considering union array/list
+     *
+     *      # Optimal solution: Using 2 pointers approach
+     *      - Take 2 pointers and
+     *
+     * */
+
     public static List< Integer > sortedArrayBruteForce(int []a, int []b) {
         // Bruteforce
         // Bruteforce
         HashSet <Integer> s=new HashSet<>();
-        ArrayList < Integer > Union=new ArrayList<>();
         for (int j : a) s.add(j);
         for (int j : b) s.add(j);
-        for (int it: s) {
-            Union.add(it);
-        }
+        ArrayList<Integer> Union = new ArrayList<>(s);
         Collections.sort(Union);
         return Union;
     }

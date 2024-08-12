@@ -3,9 +3,59 @@ package arraysAndSorting.arrays3;
 import java.util.HashMap;
 
 public class LongestSubarray {
-    // You are given an array 'a' of size 'n' and an integer 'k'.
-    // Find the length of the longest subarray of 'a' whose sum is equal to 'k'.
 
+    /**
+     *  Q.  You are given an array 'a' of size 'n' and an integer 'k'.
+     *      Find the length of the longest subarray of 'a' whose sum is equal to 'k'.
+     *
+     *      NOTE: The array contains only POSITIVES.
+     *
+     *      # Bruteforce solution.
+     *      - Generate all the subarrays.
+     *      - Then calculate the sum of the subarray.
+     *      - When the sum equals K, update the max length.
+     *      TC: O(N^3)
+     *      SC: O(1)
+     *
+     *      ### Certain Optimizations:
+     *      - Calculate the sum as we generate the next subarray from an element.
+     *      - Stop generating subarrays when sum excceds K.
+     *      - As the subsequent subarrays will also exceed K.
+     *      TC: O(N^2)
+     *      SC: O(1)
+     *
+     *      # Better Solution: Using Prefix sum
+     *      - First we store all the sum values at an index in a map.
+     *      - For each index of I:
+     *          - Add current element to prefixSum
+     *          - Update maxLen when sum == k
+     *          - Generate remaining sum and if it exist in map
+     *          - the length of the subarray will be i - mpp.get(x-k)
+     *          - Insert the sum in the map, if it doesnot exist here.
+     *      TC: O(N)
+     *      SC: O(N)
+     *
+     *      # Optimal Solution: Using Sliding window
+     *      - We have 2 pointers right and left, representing a sliding window.
+     *      - Until r < length: R increases and increments the window.
+     *          - Here we update the sum and update the maxLen.
+     *      - If sum > k: Shrinking phase begin.
+     *          - move left pointer of window and remove that element form the sum
+     *      - Then update the max len.
+     *      TC: O(2N)
+     *      SC: O(1)
+     *
+     *      NOTE: If array contains both POSITIVES and NEGATIVES.
+     *
+     *      # Bruteforce solution:
+     *      - Generate all the subarrays with two loops and store the maximum with sum == k
+     *      - Here, we cannot break when sum > k, as negatives will decrease the sum.
+     *      TC: O(N^2)
+     *      SC: O(1)
+     *
+     *      # Optimal Solution: Using Prefix sum
+     *      - As there are negatives, sliding window will fails
+     * */
 
     public static int brutelongestSubarrayWithSumK(int[] a, long k) {
         // Here we create all the possible subarrays and find out required arrays.

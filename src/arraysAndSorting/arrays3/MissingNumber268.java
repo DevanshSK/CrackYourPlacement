@@ -7,6 +7,39 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class MissingNumber268 {
+    /**
+     * Q.   Given an array nums containing n distinct numbers in the range [0, n],
+     *      return the only number in the range that is missing from the array.
+     *
+     *
+     *      # Bruteforce solution:
+     *      - Search all numbers from 0 to N inside the array.
+     *      - Use linear search to find matches.
+     *      TC: O(N^2)
+     *      SC: O(1)
+     *
+     *      # Better approch:
+     *      - Use hash arrays to store occurences of the numbers.
+     *      - Then iterate the array and find the element with zero occurences.
+     *      TC: O(2n)
+     *      SC: O(N)
+     *
+     *      # Optimal 1: Using summation.
+     *      - We know that numbers exist in the range of [0, N]
+     *      - So summation from 0 to N will differ from the sum of array.
+     *      - This difference will be equal to the missing number.
+     *      TC: O(N)
+     *      SC: O(1)
+     *
+     *      # Optimal 2: Using XOR
+     *      - XOR has a property that n ^ n = 0 and 0 ^ n = n.
+     *      - So all numbers can be xored with the array elements.
+     *      - At the end, only the missing element remains as only that element is present single
+     *      TC: O(N)
+     *      SC: O(1)
+     *
+     *
+     * */
     public int bruteForce(int[] nums) {
         // We use linear search for all the elements available in the array
         // TC: O(N^2), SC: O(1)
