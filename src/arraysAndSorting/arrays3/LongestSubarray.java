@@ -54,7 +54,8 @@ public class LongestSubarray {
      *      SC: O(1)
      *
      *      # Optimal Solution: Using Prefix sum
-     *      - As there are negatives, sliding window will fails
+     *      - As there are negatives, sliding window will fails.
+     *      - So we have to use prefix sum to use
      * */
 
     public static int brutelongestSubarrayWithSumK(int[] a, long k) {
